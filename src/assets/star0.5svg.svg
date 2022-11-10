@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>star0.5svg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="9.40952381 14.3818189 15.2246095 17.8913481 13.6861524 11.2724909 18.8190476 6.82131187 12.052659 6.24031388 9.40952381 0 6.76638857 6.24031388 0 6.82131187 5.13289524 11.2724909 3.5944381 17.8913481"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-1226.000000, -443.000000)">
+            <g id="screen" transform="translate(0.000000, 2.000000)">
+                <g id="right" transform="translate(691.000000, 31.000000)">
+                    <g id="stars3.5" transform="translate(13.000000, 410.000000)">
+                        <g id="star0.5" transform="translate(522.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Shape-Copy-5" stroke="#F8E71C" fill="#FFFFFF" xlink:href="#path-1"></use>
+                            <rect id="Rectangle-1" fill="#F8E71C" mask="url(#mask-2)" x="-1.88190476" y="-0.941649899" width="11.2914286" height="19.7746479"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

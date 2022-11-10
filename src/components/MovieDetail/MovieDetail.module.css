@@ -1,0 +1,65 @@
+.container {
+    flex:4;
+  }
+
+  .containerLoading{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image_container{
+    width: 100%;
+    height:300px;
+  }
+  
+  .large_image{
+    width:100%;
+    height:100%;
+    object-fit: fill
+  }
+
+  .title_container{
+    padding: 10px 25px;
+    background-color: #464A4C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .small_image{
+    width:20%;
+    height:40%;
+  }
+  
+  .detail_section{
+    display: flex;
+    flex: 1;
+    padding: 25px;
+  }
+  
+  .details{
+    padding:0 0 16px 16px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+  }
+
+  .plot_section{
+    padding:0 25px;
+  }
+
+  .plot{
+    margin-top: 10px;
+  }
+  .padding{
+    padding:40px
+  }
+
+  @media screen and (max-width:600px) {
+    .container{
+      display: none;
+    }
+  }

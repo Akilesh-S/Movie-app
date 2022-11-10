@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="25px" viewBox="0 0 26 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Starsvg</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-133.000000, -283.000000)" fill="#F8E71C">
+            <g id="screen" transform="translate(0.000000, 2.000000)">
+                <g id="Left" transform="translate(0.000000, 32.000000)">
+                    <g id="tile-1" transform="translate(0.000000, 64.391039)">
+                        <polygon id="Star" points="145.795132 205.146137 137.997059 209.270876 139.486358 200.53454 133.177585 194.347432 141.896095 193.072818 145.795132 185.124236 149.694168 193.072818 158.412678 194.347432 152.103905 200.53454 153.593204 209.270876"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,43 @@
+.movie {
+    margin: 8px;
+    width: 250px;
+    height: 350px;
+    border:2px solid #403A4E;
+    background-color: #464A4C;
+  }
+  
+  .image{
+    height: 80%;
+    width: 100%;
+    object-fit: fill;
+  }
+  
+ .details{
+    padding: 5px 10px;
+    background-color: #464A4C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } 
+
+  .title{
+    background-color: #464A4C;
+  } 
+
+  .starpng{
+    position: relative;
+  }
+
+  .rating{
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    color: black;
+    font-size: xx-small;
+  }
+
+@media screen and (max-width:600px) {
+  .movie{
+    margin: 3px;
+  }
+}

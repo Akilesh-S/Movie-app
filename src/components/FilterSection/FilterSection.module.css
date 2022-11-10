@@ -1,0 +1,45 @@
+.container{
+    flex:1;
+    border:1px solid #262A29;
+    background-color: #303030;
+}
+
+.title{
+    background-color: #171717 ;
+    padding:20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.filters{
+    padding: 16px;
+}
+
+.checkbox{
+    margin: 2px;
+    padding: 5px;
+}
+
+label{
+    display: block;
+    margin: 0 0 5px 0
+}
+
+.year{
+    padding-right: 10px;
+}
+
+.text{
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.genere{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        display: none;
+    }
+}

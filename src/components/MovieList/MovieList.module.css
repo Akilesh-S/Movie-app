@@ -1,0 +1,64 @@
+.container {
+  flex:4;
+  background-color: #303030;
+  border-left:3px solid #4d4d4d;
+  border-right:3px solid #4d4d4d;
+}
+
+.containerLoading{
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left:3px solid #4d4d4d;
+  border-right:3px solid #4d4d4d;
+}
+
+.list_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.title{
+  background-color: #171717 ;
+  padding:20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.search_icon{
+  float: right;
+}
+
+.year{
+  display: none;
+}
+
+.iconContainer{
+  display: flex;
+  flex:1;
+  float: right;
+}
+
+@media screen and (max-width: 768px) {
+  
+  .year{
+    display: flex;
+    float: right;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .yearText{
+    padding-right: 10px;
+  }
+
+  .dropDownIcon{
+    margin: 0 10px;
+  }
+}
