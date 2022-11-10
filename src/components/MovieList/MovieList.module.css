@@ -15,7 +15,7 @@
   border-right:3px solid #4d4d4d;
 }
 
-.list_container{
+.listContainer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@
   display: none;
 }
 
-.search_icon{
+.searchIcon{
   float: right;
 }
 

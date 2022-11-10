@@ -10,7 +10,6 @@ export const MovieCard = ({ movie }) => {
 
   const getDetails = async () => {
     const data = await fetchDetails(imdbID);
-    console.log(data);
     setMovieDetail(data);
   };
 

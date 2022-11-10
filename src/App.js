@@ -68,7 +68,7 @@ function App() {
   // };
 
   return (
-    <div className="overall">
+    <div className="mainContainer">
       <FilterSection />
       <MovieList />
       <MovieDetail />

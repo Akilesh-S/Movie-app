@@ -33,7 +33,7 @@ export const MovieList = () => {
         />
         <span>Movie Browser</span>
         <div className={styles.iconContainer}>
-          <img className={styles.search_icon} src={search} alt="search" />
+          <img className={styles.searchIcon} src={search} alt="search" />
           {/* <div className={styles.year}>
             <span className={styles.yearText}>1999</span>
             <img src={dropDownArrow} alt="dropDownArrow" />
@@ -42,7 +42,7 @@ export const MovieList = () => {
       </div>
 
       {/* Movie Component */}
-      <div className={styles.list_container}>
+      <div className={styles.listContainer}>
         {movieList.map((movie) => (
           <MovieCard movie={movie} />
         ))}
