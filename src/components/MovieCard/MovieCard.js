@@ -2,16 +2,23 @@ import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import styles from "./MovieCard.module.css";
 import star from "../../assets/Starpng.png";
+import { fetchDetails } from "../../services/fetchMovieDetail";
 
 export const MovieCard = ({ movie }) => {
   const { Poster, Title, imdbID, Year, Type } = movie;
-  const { fetchDetails } = useContext(AppContext);
+  const { setMovieDetail } = useContext(AppContext);
+
+  const getDetails = async () => {
+    const data = await fetchDetails(imdbID);
+    console.log(data);
+    setMovieDetail(data);
+  };
 
   return (
     <div
       className={styles.movie}
       key={imdbID}
-      onClick={() => fetchDetails(imdbID)}
+      onClick={() => getDetails(imdbID)}
     >
       <img
         className={styles.image}
@@ -23,7 +30,7 @@ export const MovieCard = ({ movie }) => {
       <div className={styles.details}>
         <div>
           <h4 className={styles.title}>
-            {Title.length > 16 ? Title.substring(0, 15) + "..." : Title}
+            {Title?.length > 16 ? Title.substring(0, 15) + "..." : Title}
           </h4>
           <span>{Year}</span>
           {" - "}

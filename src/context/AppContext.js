@@ -1,141 +1,140 @@
 import React, { createContext, useEffect, useState } from "react";
+import { fetchData } from "../services/fetchMovieData";
+import { MOVIE } from "../constans/contants";
 
 const AppContext = createContext();
 
-const url = "http://www.omdbapi.com/?apikey=25bf034d";
-
 const AppProvider = ({ children }) => {
-  // const [movieList, setMovieList] = useState([]);
+  // const [movieList, setMovieList] = useState([
+  //   {
+  //     Title: "The Avengers",
+  //     Year: "2012",
+  //     imdbID: "tt0848228",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Avengers: Endgame",
+  //     Year: "2019",
+  //     imdbID: "tt4154796",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Avengers: Infinity War",
+  //     Year: "2018",
+  //     imdbID: "tt4154756",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Avengers: Age of Ultron",
+  //     Year: "2015",
+  //     imdbID: "tt2395427",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "The Avengers",
+  //     Year: "1998",
+  //     imdbID: "tt0118661",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BYWE1NTdjOWQtYTQ2Ny00Nzc5LWExYzMtNmRlOThmOTE2N2I4XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "The Avengers: Earth's Mightiest Heroes",
+  //     Year: "2010–2012",
+  //     imdbID: "tt1626038",
+  //     Type: "series",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Ultimate Avengers: The Movie",
+  //     Year: "2006",
+  //     imdbID: "tt0491703",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BMTYyMjk0NTMwMl5BMl5BanBnXkFtZTgwNzY0NjAwNzE@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Ultimate Avengers II",
+  //     Year: "2006",
+  //     imdbID: "tt0803093",
+  //     Type: "movie",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BZjI3MTI5ZTYtZmNmNy00OGZmLTlhNWMtNjZiYmYzNDhlOGRkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "The Avengers",
+  //     Year: "1961–1969",
+  //     imdbID: "tt0054518",
+  //     Type: "series",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BZWQwZTdjMDUtNTY1YS00MDI0LWFkNjYtZDA4MDdmZjdlMDRlXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg",
+  //   },
+  //   {
+  //     Title: "Avengers Assemble",
+  //     Year: "2012–2019",
+  //     imdbID: "tt2455546",
+  //     Type: "series",
+  //     Poster:
+  //       "https://m.media-amazon.com/images/M/MV5BMTY0NTUyMDQwOV5BMl5BanBnXkFtZTgwNjAwMTA0MDE@._V1_SX300.jpg",
+  //   },
+  // ]);
+
   // const [movieDetail, setMovieDetail] = useState({
-  //   Title: "Avengers: Age of Ultron",
-  //   Year: "2015",
-  //   Rated: "PG-13",
-  //   Released: "01 May 2015",
-  //   Runtime: "141 min",
-  //   Genre: "Action, Adventure, Sci-Fi",
-  //   Director: "Joss Whedon",
-  //   Writer: "Joss Whedon, Stan Lee, Jack Kirby",
-  //   Actors: "Robert Downey Jr., Chris Evans, Mark Ruffalo",
-  //   Plot: "When Tony Stark and Bruce Banner try to jump-start a dormant peacekeeping program called Ultron, things go horribly wrong and it's up to Earth's mightiest heroes to stop the villainous Ultron from enacting his terrible plan.",
-  //   Language: "English, Korean",
+  //   Title: "The Avengers: Earth's Mightiest Heroes",
+  //   Year: "2010–2012",
+  //   Rated: "TV-Y7",
+  //   Released: "22 Sep 2010",
+  //   Runtime: "30 min",
+  //   Genre: "Animation, Action, Adventure",
+  //   Director: "N/A",
+  //   Writer: "N/A",
+  //   Actors: "Eric Loomis, Colleen O'Shaughnessey, Brian Bloom",
+  //   Plot: "After 74 villains break out of prison, Marvel's most powerful superheroes team up to capture all of them, and also to defend the Earth from widespread threats.",
+  //   Language: "English",
   //   Country: "United States",
-  //   Awards: "8 wins & 51 nominations",
+  //   Awards: "8 nominations",
   //   Poster:
-  //     "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
-  //   Ratings: [
-  //     { Source: "Internet Movie Database", Value: "7.3/10" },
-  //     { Source: "Rotten Tomatoes", Value: "76%" },
-  //     { Source: "Metacritic", Value: "66/100" },
-  //   ],
-  //   Metascore: "66",
-  //   imdbRating: "7.3",
-  //   imdbVotes: "856,385",
-  //   imdbID: "tt2395427",
-  //   Type: "movie",
-  //   DVD: "02 Oct 2015",
-  //   BoxOffice: "$459,005,868",
-  //   Production: "N/A",
-  //   Website: "N/A",
+  //     "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg",
+  //   Ratings: [{ Source: "Internet Movie Database", Value: "8.3/10" }],
+  //   Metascore: "N/A",
+  //   imdbRating: "8.3",
+  //   imdbVotes: "15,124",
+  //   imdbID: "tt1626038",
+  //   Type: "series",
+  //   totalSeasons: "2",
   //   Response: "True",
   // });
-  const [movieDetail, setMovieDetail] = useState({});
   const [movieList, setMovieList] = useState([]);
+  const [movieDetail, setMovieDetail] = useState({});
+  const [hamburgerIsPressed, setHamburgerIsPressed] = useState(false);
 
-  useEffect(() => {
-    fetchData("Avengers");
-  }, []);
-
-  useEffect(() => {
-    setMovieDetail({});
-    if (!!movieList[0]?.imdbID) {
-      fetchDetails(movieList[0]?.imdbID);
-    }
-  }, [movieList]);
-
-  const fetchData = async (title) => {
-    const res = await fetch(`${url}&s=${title}`);
-    const data = await res.json();
-    data.Response !== "False" ? setMovieList(data.Search) : setMovieList([]);
+  const getMovies = async () => {
+    const data = await fetchData(MOVIE);
+    setMovieList(data);
   };
 
-  const fetchDetails = async (id) => {
-    const res = await fetch(`${url}&i=${id}`);
-    const data = await res.json();
-    data.Response !== "False" ? setMovieDetail(data) : setMovieDetail([]);
-  };
-
-  const isAllHandler = (isSelected) => {
-    isSelected ? fetchData("Avengers") : setMovieList([]);
-    // isSelected
-    //   ? setMovieList([
-    //       {
-    //         Poster:
-    //           "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //         Title: "Batman Begins",
-    //         Type: "movie",
-    //         Year: "2005",
-    //         imdbID: "tt0372784",
-    //       },
-    //       {
-    //         Poster:
-    //           "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //         Title: "Batman Begins",
-    //         Type: "movie",
-    //         Year: "2005",
-    //         imdbID: "tt0372784",
-    //       },
-    //       {
-    //         Poster:
-    //           "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //         Title: "Batman Begins",
-    //         Type: "movie",
-    //         Year: "2005",
-    //         imdbID: "tt0372784",
-    //       },
-    //     ])
-    //   : setMovieList([]);
-  };
-
-  const isSeriesHandler = (isSeries) => {
-    isSeries
-      ? setMovieList(movieList.filter((movie) => movie.Type === "series"))
-      : fetchData("Avengers");
-    // setMovieList([
-    //   {
-    //     Poster:
-    //       "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //     Title: "Batman Begins",
-    //     Type: "movie",
-    //     Year: "2005",
-    //     imdbID: "tt0372784",
-    //   },
-    //   {
-    //     Poster:
-    //       "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //     Title: "Batman Begins",
-    //     Type: "series",
-    //     Year: "2005",
-    //     imdbID: "tt0372784",
-    //   },
-    //   {
-    //     Poster:
-    //       "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    //     Title: "Batman Begins",
-    //     Type: "movie",
-    //     Year: "2005",
-    //     imdbID: "tt0372784",
-    //   },
-    // ]);
-  };
+  // useEffect(() => {
+  //   getMovies();
+  // }, []);
 
   return (
     <AppContext.Provider
       value={{
         movieList,
         movieDetail,
-        isAllHandler,
-        fetchDetails,
-        isSeriesHandler,
+        hamburgerIsPressed,
+        setMovieList,
+        setMovieDetail,
+        setHamburgerIsPressed,
       }}
     >
       {children}

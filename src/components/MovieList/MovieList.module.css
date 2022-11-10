@@ -30,6 +30,10 @@
   font-weight: 600;
 }
 
+.hamburger{
+  display: none;
+}
+
 .search_icon{
   float: right;
 }
@@ -60,5 +64,13 @@
 
   .dropDownIcon{
     margin: 0 10px;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .hamburger{
+    display: inline;
+    width: 30px;
+    height: 15px;
   }
 }

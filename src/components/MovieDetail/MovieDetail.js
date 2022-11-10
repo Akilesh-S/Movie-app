@@ -1,14 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import styles from "./MovieDetail.module.css";
 import { StarRating } from "../commonComponents/StarRating/StarRating";
 import { BoldSpan } from "../commonComponents/BoldSpan/BoldSpan";
+import { fetchDetails } from "../../services/fetchMovieDetail";
 
 export const MovieDetail = () => {
-  const { movieDetail } = useContext(AppContext);
+  const { movieDetail, movieList, setMovieDetail } = useContext(AppContext);
+  const [rating, setRating] = useState(0);
+
   const { Poster, Title, Year, Type, Genre, Released, Ratings, Actors, Plot } =
     movieDetail;
-  const [rating, setRating] = useState(0);
+
+  const getMovieDetail = useCallback(async () => {
+    setMovieDetail({});
+    if (!!movieList[0]?.imdbID) {
+      const data = await fetchDetails(movieList[0]?.imdbID);
+      setMovieDetail(data);
+    }
+  }, [setMovieDetail, movieList]);
+
+  useEffect(() => {
+    getMovieDetail();
+  }, [movieList, getMovieDetail]);
 
   // Error Handle
   if (Title == null)

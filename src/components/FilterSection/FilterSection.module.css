@@ -15,6 +15,12 @@
     padding: 16px;
 }
 
+.select{
+    color: white;
+    background-color: #30303027;
+    border: 0.5 solid white;
+}
+
 .checkbox{
     margin: 2px;
     padding: 5px;
@@ -38,8 +44,41 @@ label{
     margin-bottom: 5px;
 }
 
+.close{
+    display: none;
+}
+
 @media screen and (max-width: 768px){
     .container{
         display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        display: block;
+        width: 200px;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+    }
+
+    .containerNotDisplay{
+        display: none;
+    }
+
+    .title{
+        display: none;
+    }
+
+    .close{
+        display: block;
+        float: right;
+        padding:20px;
+        font-size: 16px;
+        font-weight: 200;
+    }
+    .select{
+        font-size: 10px;
     }
 }
