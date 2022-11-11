@@ -13,7 +13,7 @@ export const FilterSection = () => {
   const [selectOptions, setSelectOptions] = useState([
     2022, 2021, 2020, 2019, 2018, 2017,
   ]);
-  const [selectedYear, setSelectedYear] = useState(2022);
+  const [selectedYear, setSelectedYear] = useState("");
 
   const getMovieWithYear = useCallback(async () => {
     const data = await fetchDataWithYear(MOVIE, selectedYear);
@@ -76,6 +76,7 @@ export const FilterSection = () => {
           value={selectedYear}
           onChange={selectOnChangeHandler}
         >
+          <option value={""}>All</option>
           {selectOptions.map((i) => (
             <option value={i}>{i}</option>
           ))}
