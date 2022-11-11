@@ -70,7 +70,7 @@ export const FilterSection = () => {
 
       <div className={styles.filters}>
         {/* sort section */}
-        <p className={styles.text}>Sort</p>
+        <p className={styles.text}>Year</p>
         <select
           className={styles.select}
           value={selectedYear}
