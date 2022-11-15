@@ -3,6 +3,14 @@ import { AppContext } from "../../context/AppContext";
 import styles from "./MovieCard.module.css";
 import star from "../../assets/Starpng.png";
 import { fetchDetails } from "../../services/fetchMovieDetail";
+import {
+  MovieCardWrapper,
+  MovieDetailsWrapper,
+  MoviePoster,
+  Rating,
+  RatingWrapper,
+  TitleText,
+} from "./MovieCard.styled";
 
 export const MovieCard = ({ movie }) => {
   const { Poster, Title, imdbID, Year, Type } = movie;
@@ -14,32 +22,27 @@ export const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div
-      className={styles.movie}
-      key={imdbID}
-      onClick={() => getDetails(imdbID)}
-    >
-      <img
-        className={styles.image}
+    <MovieCardWrapper key={imdbID} onClick={() => getDetails(imdbID)}>
+      <MoviePoster
         src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"}
         alt={Title}
       />
 
       {/* Card detail section */}
-      <div className={styles.details}>
+      <MovieDetailsWrapper>
         <div>
-          <h4 className={styles.title}>
+          <TitleText>
             {Title?.length > 16 ? Title.substring(0, 15) + "..." : Title}
-          </h4>
+          </TitleText>
           <span>{Year}</span>
           {" - "}
           <span>{Type}</span>
         </div>
-        <div className={styles.starpng}>
+        <RatingWrapper>
           <img src={star} alt="star"></img>
-          <p className={styles.rating}>7.5</p>
-        </div>
-      </div>
-    </div>
+          <Rating>7.5</Rating>
+        </RatingWrapper>
+      </MovieDetailsWrapper>
+    </MovieCardWrapper>
   );
 };

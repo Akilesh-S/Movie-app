@@ -4,6 +4,16 @@ import styles from "./FilterSection.module.css";
 import { fetchData } from "../../services/fetchMovieData";
 import { MOVIE } from "../../constans/contants";
 import { fetchDataWithYear } from "../../services/fetchMovieDataWithYear";
+import {
+  CheckBox,
+  CloseButton,
+  FilterContainer,
+  FilterWrapper,
+  Genere,
+  Select,
+  Text,
+  Title,
+} from "./FilterSection.styled";
 
 export const FilterSection = () => {
   const [isAll, setIsAll] = useState(true);
@@ -58,35 +68,24 @@ export const FilterSection = () => {
   }, [selectedYear, getMovieWithYear]);
 
   return (
-    <div
-      className={`${styles.container} ${
-        hamburgerIsPressed ? "" : styles.containerNotDisplay
-      }`}
-    >
-      <div className={styles.title}>Filter</div>
-      <div className={styles.close} onClick={hamburgerClickHandler}>
-        Close
-      </div>
+    <FilterContainer mobileHamburger={hamburgerIsPressed}>
+      <Title>Filter</Title>
+      <CloseButton onClick={hamburgerClickHandler}>Close</CloseButton>
 
-      <div className={styles.filters}>
+      <FilterWrapper>
         {/* sort section */}
-        <p className={styles.text}>Year</p>
-        <select
-          className={styles.select}
-          value={selectedYear}
-          onChange={selectOnChangeHandler}
-        >
+        <Text>Year</Text>
+        <Select value={selectedYear} onChange={selectOnChangeHandler}>
           <option value={""}>All</option>
           {selectOptions.map((i) => (
             <option value={i}>{i}</option>
           ))}
-        </select>
+        </Select>
 
         {/* Genre section */}
-        <p className={styles.genere}>Genre</p>
+        <Genere>Genre</Genere>
         <label>
-          <input
-            className={styles.checkbox}
+          <CheckBox
             type="checkbox"
             title="all"
             value="all"
@@ -96,8 +95,7 @@ export const FilterSection = () => {
           All
         </label>
         <label>
-          <input
-            className={styles.checkbox}
+          <CheckBox
             type="checkbox"
             title="series"
             value="series"
@@ -106,7 +104,7 @@ export const FilterSection = () => {
           />
           Series
         </label>
-      </div>
-    </div>
+      </FilterWrapper>
+    </FilterContainer>
   );
 };

@@ -4,6 +4,18 @@ import styles from "./MovieDetail.module.css";
 import { StarRating } from "../commonComponents/StarRating/StarRating";
 import { BoldSpan } from "../commonComponents/BoldSpan/BoldSpan";
 import { fetchDetails } from "../../services/fetchMovieDetail";
+import {
+  DetailContainer,
+  ImageContainer,
+  LoadingContainer,
+  MovieDetailContainer,
+  MovieDetails,
+  PlotText,
+  PlotWrapper,
+  PosterImage,
+  PosterSmallImage,
+  TitleContainer,
+} from "./MovieDetails.styled";
 
 export const MovieDetail = () => {
   const { movieDetail, movieList, setMovieDetail } = useContext(AppContext);
@@ -27,77 +39,75 @@ export const MovieDetail = () => {
   // Error Handle
   if (Title == null)
     return (
-      <div className={styles.containerLoading}>
+      <LoadingContainer>
         <p>Loading ...</p>
         <p>If not loaded, try checking the filter</p>
-      </div>
+      </LoadingContainer>
     );
 
   return (
-    <div className={styles.container}>
+    <MovieDetailContainer>
       {/* Image container */}
-      <div className={styles.image_container}>
-        <img
-          className={styles.large_image}
+      <ImageContainer>
+        <PosterImage
           src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"}
           alt={Title}
         />
-      </div>
+      </ImageContainer>
 
       {/* Detail container */}
-      <div className={styles.detail_container}>
-        <div className={styles.title_container}>
-          <div>
-            <h4 className={styles.title}>{Title}</h4>
-            <span>{Year}</span>
-            {" - "}
-            <span>{Type}</span>
-          </div>
-          <div className={styles.starpng}>
-            <StarRating
-              count={5}
-              rating={rating}
-              onRating={(rate) => setRating(rate)}
-            />
-          </div>
+
+      <TitleContainer>
+        <div>
+          <h4>{Title}</h4>
+          <span>{Year}</span>
+          {" - "}
+          <span>{Type}</span>
         </div>
-        <div className={styles.detail_section}>
-          <img
-            className={styles.small_image}
-            src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"}
-            alt={Title}
+        <div>
+          <StarRating
+            count={5}
+            rating={rating}
+            onRating={(rate) => setRating(rate)}
           />
-          <div className={styles.details}>
-            <p>
-              <BoldSpan>Title:</BoldSpan> {Title}
-            </p>
-
-            <p>
-              <BoldSpan>Year:</BoldSpan> {Year}
-            </p>
-            <p>
-              <BoldSpan>Genre:</BoldSpan> {Genre}
-            </p>
-            <p>
-              <BoldSpan>Release:</BoldSpan> {Released}
-            </p>
-            <p>
-              <BoldSpan>Rating: </BoldSpan>
-              {Ratings[0]?.Value}
-            </p>
-            <p>
-              <BoldSpan>Actors: </BoldSpan>
-              {Actors}
-            </p>
-          </div>
         </div>
+      </TitleContainer>
 
-        {/* Plot section */}
-        <div className={styles.plot_section}>
-          <BoldSpan>Plot</BoldSpan>
-          <p className={styles.plot}>{Plot}</p>
-        </div>
-      </div>
-    </div>
+      <DetailContainer>
+        <PosterSmallImage
+          src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"}
+          alt={Title}
+        />
+        <MovieDetails>
+          <p>
+            <BoldSpan>Title:</BoldSpan> {Title}
+          </p>
+
+          <p>
+            <BoldSpan>Year:</BoldSpan> {Year}
+          </p>
+          <p>
+            <BoldSpan>Genre:</BoldSpan> {Genre}
+          </p>
+          <p>
+            <BoldSpan>Release:</BoldSpan> {Released}
+          </p>
+          <p>
+            <BoldSpan>Rating: </BoldSpan>
+            {Ratings[0]?.Value}
+          </p>
+          <p>
+            <BoldSpan>Actors: </BoldSpan>
+            {Actors}
+          </p>
+        </MovieDetails>
+      </DetailContainer>
+
+      {/* Plot section */}
+      <PlotWrapper>
+        <BoldSpan>Plot</BoldSpan>
+        <PlotText>{Plot}</PlotText>
+      </PlotWrapper>
+    </MovieDetailContainer>
   );
 };
